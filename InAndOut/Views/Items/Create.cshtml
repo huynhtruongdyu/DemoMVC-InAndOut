@@ -1,0 +1,72 @@
+﻿@model InAndOut.ViewModels.ItemVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form method="post" asp-action="Create">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-12">
+            @*HEADER*@
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Item.Name"></label>
+                </div>
+                <div class="col-3">
+                    <label asp-for="Item.Borrower"></label>
+                </div>
+                <div class="col-3">
+                    <label asp-for="Item.Lender"></label>
+                </div>
+                <div class="col-3">
+                    <label asp-for="Item.ItemTypeId"></label>
+                </div>
+            </div>
+            @*HEADER END*@
+
+            @*INPUT*@
+            <div class="form-group row">
+                <div class="col-3">
+                    <input asp-for="Item.Name" class="form-control" />
+                    <span asp-validation-for="Item.Name" class="text-danger"></span>
+                </div>
+                <div class="col-3">
+                    <input asp-for="Item.Borrower" class="form-control" />
+                    <span asp-validation-for="Item.Borrower" class="text-danger"></span>
+                </div>
+                <div class="col-3">
+                    <input asp-for="Item.Lender" class="form-control" />
+                    <span asp-validation-for="Item.Lender" class="text-danger"></span>
+                </div>
+                <div class="col-3">
+                    <select asp-for="Item.ItemTypeId" asp-items="@Model.ItemTypeDropdown" class="form-control">
+                        <option selected>--Select Type--</option>
+
+                    </select>
+                    <span asp-validation-for="Item.ItemTypeId" class="text-danger"></span>
+                </div>
+            </div>
+            @*INPUT END*@
+
+            @*ACTION*@
+            <div class="form-group row">
+                <div class="col">
+                    <input type="submit" value="Create" />
+                </div>
+                <div class="col">
+                    <a asp-action="Index" role="button">Back</a>
+                </div>
+            </div>
+            @*ACTION END*@
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

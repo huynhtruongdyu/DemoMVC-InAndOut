@@ -1,0 +1,38 @@
+﻿@model IEnumerable<InAndOut.Models.Item>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Borrowed Item List</h1>
+<a asp-controller="Items" asp-action="Create">Create</a>
+<hr />
+@if (Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Borrowed</th>
+                <th>Lender</th>
+                <th>Item Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Borrower</td>
+                    <td>@item.Lender</td>
+                    <td>@item.ItemType.Name</td>
+                    <td>
+                        <a asp-controller="Items" asp-action="Update" asp-route-id="@item.Id">Update </a>
+                        |
+                        <a asp-controller="Items" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

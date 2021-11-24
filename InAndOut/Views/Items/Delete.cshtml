@@ -1,0 +1,60 @@
+﻿@model InAndOut.Models.Item
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<form method="post" asp-action="DeletePost" >
+    <input asp-for="Id" hidden />
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-12">
+            @*HEADER*@
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-4">
+                    <label asp-for="Borrower"></label>
+                </div>
+                <div class="col-4">
+                    <label asp-for="Lender"></label>
+                </div>
+            </div>
+            @*HEADER END*@
+
+            @*INPUT*@
+            <div class="form-group row">
+                <div class="col-4">
+                    <input asp-for="Name" class="form-control" disabled />
+                </div>
+                <div class="col-4">
+                    <input asp-for="Borrower" class="form-control" disabled />
+                </div>
+                <div class="col-4">
+                    <input asp-for="Lender" class="form-control" disabled />
+                </div>
+            </div>
+            @*INPUT END*@
+
+            @*ACTION*@
+            <div class="form-group row">
+                <div class="col">
+                    <input type="submit" value="Delete" />
+                </div>
+                <div class="col">
+                    <a asp-action="Index" role="button">Back</a>
+                </div>
+            </div>
+            @*ACTION END*@
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
